@@ -10,6 +10,10 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
     onTaskFormSubmit(formData);
+    setFormData({
+      text: "",
+      category: "",
+    });
   }
 
   function handleChange(e) {
@@ -32,7 +36,8 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
       </label>
       <label>
         Category
-        <select name="category" onChange={handleChange}>
+        <select name="category" onChange={handleChange} value={formData.category}>
+          <option value=""></option>
           {newCategories.map((category) => {
             return (
               <option key={category} value={category}>
